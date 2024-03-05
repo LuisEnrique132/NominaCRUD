@@ -1,0 +1,53 @@
+﻿@model IEnumerable<NominaCRUD.Models.DeduccionesEmpleado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaDeduccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deduccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empleado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDeduccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deduccion.DeduccionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empleado.EmpleadoId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DeduccionEmpleadoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DeduccionEmpleadoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DeduccionEmpleadoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

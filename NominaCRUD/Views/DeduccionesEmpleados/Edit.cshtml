@@ -1,0 +1,49 @@
+﻿@model NominaCRUD.Models.DeduccionesEmpleado
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>DeduccionesEmpleado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DeduccionEmpleadoId" />
+            <div class="form-group">
+                <label asp-for="EmpleadoId" class="control-label"></label>
+                <select asp-for="EmpleadoId" class="form-control" asp-items="ViewBag.EmpleadoId"></select>
+                <span asp-validation-for="EmpleadoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeduccionId" class="control-label"></label>
+                <select asp-for="DeduccionId" class="form-control" asp-items="ViewBag.DeduccionId"></select>
+                <span asp-validation-for="DeduccionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monto" class="control-label"></label>
+                <input asp-for="Monto" class="form-control" />
+                <span asp-validation-for="Monto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaDeduccion" class="control-label"></label>
+                <input asp-for="FechaDeduccion" class="form-control" />
+                <span asp-validation-for="FechaDeduccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
