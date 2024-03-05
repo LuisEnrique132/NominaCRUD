@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace NominaCRUD.Models;
 
 public partial class Deduccione
 {
-    public int DeduccionId { get; set; }
 
+    public int DeduccionId { get; set; }
+    [Display(Name ="Nomber de la Decuccion")]
     public string NombreDeduccion { get; set; } = null!;
+    [Display(Name = "Descripcion")]
 
     public string Descripcion { get; set; } = null!;
 
