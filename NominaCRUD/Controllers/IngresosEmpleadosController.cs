@@ -48,8 +48,8 @@ namespace NominaCRUD.Controllers
         // GET: IngresosEmpleados/Create
         public IActionResult Create()
         {
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "EmpleadoId");
-            ViewData["TipoIngresoId"] = new SelectList(_context.TiposIngresos, "TipoIngresoId", "TipoIngresoId");
+            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre");
+            ViewData["TipoIngresoId"] = new SelectList(_context.TiposIngresos, "TipoIngresoId", "NombreTipo");
             return View();
         }
 
@@ -66,8 +66,8 @@ namespace NominaCRUD.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "EmpleadoId", ingresosEmpleado.EmpleadoId);
-            ViewData["TipoIngresoId"] = new SelectList(_context.TiposIngresos, "TipoIngresoId", "TipoIngresoId", ingresosEmpleado.TipoIngresoId);
+            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre", ingresosEmpleado.EmpleadoId);
+            ViewData["TipoIngresoId"] = new SelectList(_context.TiposIngresos, "TipoIngresoId", "NombreTipo", ingresosEmpleado.TipoIngresoId);
             return View(ingresosEmpleado);
         }
 

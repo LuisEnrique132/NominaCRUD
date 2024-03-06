@@ -8,7 +8,7 @@ public partial class Deduccione
 {
 
     public int DeduccionId { get; set; }
-    [Display(Name ="Nomber de la Decuccion")]
+    [Display(Name ="Nombre de la deduccion")]
     public string NombreDeduccion { get; set; } = null!;
     [Display(Name = "Descripcion")]
 

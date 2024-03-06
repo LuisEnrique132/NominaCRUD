@@ -9,7 +9,7 @@ public partial class DeduccionesEmpleado
     public int DeduccionEmpleadoId { get; set; }
 
     public int EmpleadoId { get; set; }
-
+   
     public int DeduccionId { get; set; }
     [Display(Name ="Monto total de las deduciones")]
     public decimal Monto { get; set; }
