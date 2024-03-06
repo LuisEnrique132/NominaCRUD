@@ -15,7 +15,7 @@ public partial class Pago
 
     public decimal SalarioNeto { get; set; }
 
-    public DateOnly FechaPago { get; set; }
+    public DateTime? FechaPago { get; set; }
 
     public virtual Empleado Empleado { get; set; } = null!;
 }

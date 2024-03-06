@@ -48,8 +48,8 @@ namespace NominaCRUD.Controllers
         // GET: DeduccionesEmpleados/Create
         public IActionResult Create()
         {
-            ViewData["DeduccionId"] = new SelectList(_context.Deducciones, "DeduccionId", "DeduccionId");
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "EmpleadoId");
+            ViewData["DeduccionId"] = new SelectList(_context.Deducciones, "DeduccionId", "NombreDeduccion");
+            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre");
             return View();
         }
 
@@ -66,8 +66,8 @@ namespace NominaCRUD.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeduccionId"] = new SelectList(_context.Deducciones, "DeduccionId", "DeduccionId", deduccionesEmpleado.DeduccionId);
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "EmpleadoId", deduccionesEmpleado.EmpleadoId);
+           ViewData["DeduccionId"] = new SelectList(_context.Deducciones, "DeduccionId", "NombreDeduccion", deduccionesEmpleado.DeduccionId);
+           ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre", deduccionesEmpleado.EmpleadoId);
             return View(deduccionesEmpleado);
         }
 
@@ -84,8 +84,8 @@ namespace NominaCRUD.Controllers
             {
                 return NotFound();
             }
-            ViewData["DeduccionId"] = new SelectList(_context.Deducciones, "DeduccionId", "DeduccionId", deduccionesEmpleado.DeduccionId);
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "EmpleadoId", deduccionesEmpleado.EmpleadoId);
+            ViewData["DeduccionId"] = new SelectList(_context.Deducciones, "DeduccionId", "NombreDeduccion", deduccionesEmpleado.DeduccionId);
+            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre", deduccionesEmpleado.EmpleadoId);
             return View(deduccionesEmpleado);
         }
 
