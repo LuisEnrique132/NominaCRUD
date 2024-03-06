@@ -8,8 +8,10 @@ public partial class Deduccione
 {
 
     public int DeduccionId { get; set; }
-    [Display(Name ="Nombre de la deduccion")]
+
+    [Display(Name ="Deduccion")]
     public string NombreDeduccion { get; set; } = null!;
+
     [Display(Name = "Descripcion")]
 
     public string Descripcion { get; set; } = null!;
