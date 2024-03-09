@@ -71,11 +71,10 @@ namespace NominaCRUD.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
- Allan
+ 
             ViewData["DeduccionId"] = new SelectList(_context.Deducciones, "DeduccionId", "NombreDeduccion", deduccionesEmpleado.DeduccionId);
-=======
-           ViewData["DeduccionId"] = new SelectList(_context.Deducciones, "DeduccionId", "NombreDeduccion", deduccionesEmpleado.DeduccionId);
- master
+
+ 
            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre", deduccionesEmpleado.EmpleadoId);
             return View(deduccionesEmpleado);
         }
