@@ -84,8 +84,8 @@ namespace NominaCRUD.Controllers
             {
                 return NotFound();
             }
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "EmpleadoId", ingresosEmpleado.EmpleadoId);
-            ViewData["TipoIngresoId"] = new SelectList(_context.TiposIngresos, "TipoIngresoId", "TipoIngresoId", ingresosEmpleado.TipoIngresoId);
+            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre", ingresosEmpleado.EmpleadoId);
+            ViewData["TipoIngresoId"] = new SelectList(_context.TiposIngresos, "TipoIngresoId", "NombreTipo", ingresosEmpleado.TipoIngresoId);
             return View(ingresosEmpleado);
         }
 
@@ -121,8 +121,8 @@ namespace NominaCRUD.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "EmpleadoId", ingresosEmpleado.EmpleadoId);
-            ViewData["TipoIngresoId"] = new SelectList(_context.TiposIngresos, "TipoIngresoId", "TipoIngresoId", ingresosEmpleado.TipoIngresoId);
+            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre", ingresosEmpleado.EmpleadoId);
+            ViewData["TipoIngresoId"] = new SelectList(_context.TiposIngresos, "TipoIngresoId", "NombreTipo", ingresosEmpleado.TipoIngresoId);
             return View(ingresosEmpleado);
         }
 
