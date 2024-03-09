@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NominaCRUD.Models;
 
@@ -55,6 +50,7 @@ namespace NominaCRUD.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DeduccionId,NombreDeduccion,Descripcion")] Deduccione deduccione)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(deduccione);
