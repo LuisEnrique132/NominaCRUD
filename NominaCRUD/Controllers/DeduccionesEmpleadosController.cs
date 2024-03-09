@@ -60,21 +60,13 @@ namespace NominaCRUD.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DeduccionEmpleadoId,EmpleadoId,DeduccionId,Monto,FechaDeduccion")] DeduccionesEmpleado deduccionesEmpleado)
         {
-
-            //_context.Add(deduccionesEmpleado);
-            //await _context.SaveChangesAsync();
-            //return RedirectToAction(nameof(Index));
-
             if (ModelState.IsValid)
             {
                 _context.Add(deduccionesEmpleado);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
- 
-            ViewData["DeduccionId"] = new SelectList(_context.Deducciones, "DeduccionId", "NombreDeduccion", deduccionesEmpleado.DeduccionId);
-
- 
+           ViewData["DeduccionId"] = new SelectList(_context.Deducciones, "DeduccionId", "NombreDeduccion", deduccionesEmpleado.DeduccionId);
            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre", deduccionesEmpleado.EmpleadoId);
             return View(deduccionesEmpleado);
         }

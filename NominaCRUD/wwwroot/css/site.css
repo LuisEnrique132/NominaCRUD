@@ -18,10 +18,5 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
-    background: #D8D8D9;
-}
-
-.navbar-nav .nav-item:hover {
-    background-color: black); /* Cambia el color de fondo al pasar el puntero */
+  margin-bottom: 60px;
 }

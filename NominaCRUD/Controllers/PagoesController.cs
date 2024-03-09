@@ -47,7 +47,7 @@ namespace NominaCRUD.Controllers
         // GET: Pagoes/Create
         public IActionResult Create()
         {
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre");
+            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "EmpleadoId");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace NominaCRUD.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre", pago.EmpleadoId);
+            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "EmpleadoId", pago.EmpleadoId);
             return View(pago);
         }
 
@@ -81,7 +81,7 @@ namespace NominaCRUD.Controllers
             {
                 return NotFound();
             }
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre", pago.EmpleadoId);
+            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "EmpleadoId", pago.EmpleadoId);
             return View(pago);
         }
 
@@ -117,7 +117,7 @@ namespace NominaCRUD.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre", pago.EmpleadoId);
+            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "EmpleadoId", pago.EmpleadoId);
             return View(pago);
         }
 
