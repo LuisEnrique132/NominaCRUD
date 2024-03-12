@@ -11,12 +11,12 @@ public partial class Deduccione
 
 
     [Display(Name ="Deduccion")]
+    [Required(ErrorMessage = "Este Campo es requerido")]
 
- 
     public string NombreDeduccion { get; set; } = null!;
 
     [Display(Name = "Descripcion")]
-
+    [Required(ErrorMessage = "Este Campo es requerido")]
     public string Descripcion { get; set; } = null!;
 
     public virtual ICollection<DeduccionesEmpleado> DeduccionesEmpleados { get; set; } = new List<DeduccionesEmpleado>();
