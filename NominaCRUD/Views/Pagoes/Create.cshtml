@@ -48,5 +48,14 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Este script se ejecutará cuando cambie la selección del empleado
+        $('#EmpleadoId').change(function () {
+            var selectedEmployeeId = $(this).val();
+            window.location.href = '@Url.Action("Create", "Pagoes")?empleadoId=' + selectedEmployeeId;
+        });
+    </script>
 }

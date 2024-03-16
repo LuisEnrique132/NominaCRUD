@@ -14,8 +14,8 @@ public partial class Empleado
     public string Nombre { get; set; } = null!;
     [Display(Name = "Cedula")]
     [Required(ErrorMessage ="Este Campo es requerido")]
-    [MaxLength(12, ErrorMessage ="No Cumple con lo requerido")]
-    [MinLength(11, ErrorMessage = "No Cumple con lo requerido")]
+    [MaxLength(11, ErrorMessage ="No Cumple con lo requerido")]
+    [MinLength(10, ErrorMessage = "No Cumple con lo requerido")]
 
     public string Cedula { get; set; } = null!;
     [Display(Name = "Codigo del empleado")]
