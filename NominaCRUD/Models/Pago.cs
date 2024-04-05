@@ -21,7 +21,10 @@ public partial class Pago
     [Display(Name = "Salario Neto")]
     public decimal SalarioNeto { get; set; }
 
+ Allan
     [Display(Name = "Fecha de Pago")]
+=======
+ master
     public DateTime? FechaPago { get; set; }
 
     public virtual Empleado? Empleado { get; set; } = null!;
