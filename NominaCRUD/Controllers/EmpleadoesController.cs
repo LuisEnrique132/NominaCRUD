@@ -14,8 +14,19 @@ namespace NominaCRUD.Controllers
         }
 
         // GET: Empleadoes
-        public async Task<IActionResult> Index() => View(await _context.Empleados.ToListAsync());
 
+        public async Task<IActionResult> Index(string buscar)
+        {
+            var usuarios = from usuario in _context.Empleados select usuario;
+
+            if (!String.IsNullOrEmpty(buscar))
+            {
+                usuarios = usuarios.Where(s => s.Nombre!.Contains(buscar));
+            }
+
+            return View(await usuarios.ToListAsync());
+
+        }
         // GET: Empleadoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
