@@ -43,7 +43,50 @@ namespace NominaCRUD.Controllers
         public async Task<IActionResult> Index()
         {
             var recorverNominaContext = _context.Pagos.Include(p => p.Empleado);
-            return View(await recorverNominaContext.ToListAsync());
+            var ListaEmpleados = _context.Empleados;
+            var LisIngresos = _context.IngresosEmpleados;
+            var LisDeducciones = _context.DeduccionesEmpleados;
+
+            var ListaIngresos = new List<IngresosEmpleado>();
+            var ListaDeducciones = new List<DeduccionesEmpleado>();
+            var ListaPagos = new List<Pago>();
+
+            foreach (var item in LisIngresos)
+            {
+                ListaIngresos.Add(item);
+            }
+
+            foreach (var item in LisDeducciones)
+            {
+                ListaDeducciones.Add(item);
+            }
+
+            foreach (var item in ListaEmpleados)
+            {
+                decimal Deduccion = ListaDeducciones.Where(x => x.EmpleadoId == item.EmpleadoId).Sum(x => x.Monto);
+                decimal Ingreso = ListaIngresos.Where(x => x.EmpleadoId == item.EmpleadoId).Sum(x => x.Monto);
+                Empleado dataEmpleado = new Empleado()
+                {
+                    Nombre = item.Nombre
+                };
+
+                Pago NuevoPago = new Pago()
+                {
+                    EmpleadoId = item.EmpleadoId,
+                    PagoId = 6,
+                    TotalDeducciones = Deduccion,
+                    TotalIngresos = Ingreso,
+                    SalarioNeto = item.SalarioBase + Ingreso - Deduccion,
+                    Empleado = dataEmpleado,
+                    FechaPago = DateTime.Today
+
+                };
+                ListaPagos.Add(NuevoPago);
+            }
+
+            //return (IActionResult)(ListaPagos);
+            return View(ListaPagos);
+            //return View(await recorverNominaContext.ToListAsync());
         }
 
         // GET: Pagoes/Details/5

@@ -9,6 +9,14 @@
 <p>
     <a asp-action="Create">Crear empleado</a>
 </p>
+
+<form asp-controller="Empleadoes" asp-action="Index">
+    <p>
+        Buscar: <input type="text" name="buscar" class="form-text">
+        <input type="submit" value="Buscar" class="btn btn-sm btn-primary">
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
