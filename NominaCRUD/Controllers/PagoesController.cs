@@ -154,7 +154,8 @@ namespace NominaCRUD.Controllers
 
 
             var pago = await _context.Pagos.FindAsync(id);
-            if (pago == null)
+
+            if (pago != null)
             {
                 return NotFound();
             }
