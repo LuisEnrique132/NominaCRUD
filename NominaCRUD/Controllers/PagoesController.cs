@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using NominaCRUD.Models;
 
 namespace NominaCRUD.Controllers
@@ -39,6 +40,24 @@ namespace NominaCRUD.Controllers
             pago.TotalIngresos = totalIngresos;
             pago.SalarioNeto = salarioNeto;
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<object>>> GetPagos()
+        {
+            var pagos = await _context.Pagos
+                .Select(p => new
+                {
+                    id = p.PagoId,
+                    NombreEmpleado = p.Empleado.Nombre,
+                    FechaPago = p.FechaPago,
+                    SalarioNeto = p.SalarioNeto,
+                    TipoMovimiento = "DB" // Tipo de movimiento por defecto
+                })
+                .ToListAsync();
+
+            return pagos;
+        }
+
         // GET: Pagoes
         public async Task<IActionResult> Index()
         {
@@ -108,26 +127,6 @@ namespace NominaCRUD.Controllers
             return View(pago);
         }
 
-        // GET: Pagoes/Create
-        /*  public IActionResult Create()
-          {
-              var empleados = _context.Empleados.ToList();
-              ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "EmpleadoId", "Nombre");
-              var nuevoPago = new Pago();
-
-              // Si hay al menos un empleado, calcular los totales y el salario neto del primer empleado
-              if (empleados.Any())
-              {
-                  var primerEmpleado = empleados.First();
-                  nuevoPago.EmpleadoId = primerEmpleado.EmpleadoId;
-
-
-                  CalcularTotalesYNeto(nuevoPago);
-              }
-              return View(nuevoPago);
-
-
-          }*/
         // Acción para crear un nuevo pago
         public IActionResult Create(int? empleadoId)
         {
