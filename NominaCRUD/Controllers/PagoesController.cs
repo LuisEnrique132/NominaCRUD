@@ -41,23 +41,7 @@ namespace NominaCRUD.Controllers
             pago.SalarioNeto = salarioNeto;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<object>>> GetPagos()
-        {
-            var pagos = await _context.Pagos
-                .Select(p => new
-                {
-                    id = p.PagoId,
-                    NombreEmpleado = p.Empleado.Nombre,
-                    FechaPago = p.FechaPago,
-                    SalarioNeto = p.SalarioNeto,
-                    TipoMovimiento = "DB" // Tipo de movimiento por defecto
-                })
-                .ToListAsync();
-
-            return pagos;
-        }
-
+       
         // GET: Pagoes
         public async Task<IActionResult> Index()
         {
@@ -127,6 +111,7 @@ namespace NominaCRUD.Controllers
             return View(pago);
         }
 
+       
         // Acción para crear un nuevo pago
         public IActionResult Create(int? empleadoId)
         {

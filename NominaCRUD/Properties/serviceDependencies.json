@@ -5,8 +5,7 @@
     },
     "mssql1": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:CadenaSQL",
-      "dynamicId": null
+      "connectionId": "ConnectionStrings:CadenaSQL"
     }
   }
 }
