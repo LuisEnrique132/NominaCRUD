@@ -1,0 +1,61 @@
+﻿@model IEnumerable<NominaCRUD.Models.AsientoContable>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Crear Deduccion</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auxiliar)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+           <th>
+            @Html.DisplayNameFor(model => model.Monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.moneda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaccions)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) //AQUI ME DA ERROR
+        {
+            <tr>
+                <td>
+                    @item.Descripcion
+                </td>
+                <td>
+                     @item.Auxiliar)
+                </td>
+                <td>
+                    @item.Fecha
+                </td>
+                <td>
+                    @item.estado.Descripcion
+                </td>
+                <td>
+                    @item.moneda.Descripcion
+                </td>
+                <td>
+                    @item.Transaccions
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
