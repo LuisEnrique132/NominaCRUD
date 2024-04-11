@@ -1,0 +1,79 @@
+﻿@model IEnumerable<NominaCRUD.Models.EntradaContableDTO>
+
+@{
+    ViewData["Title"] = "Entradas Contables";
+}
+
+<p>
+    <a asp-action="Crear" class="btn btn-outline-success">Crear un nuevo Asiento</a>
+</p>
+<h1>Gestor de Entradas Contables</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Auxiliar
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Monto
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Moneda
+            </th>
+            <th>
+                Transacciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Auxiliar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Monto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstadoNombre) <!-- Mostrar nombre/descripción del estado -->
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MonedaNombre) <!-- Mostrar nombre/descripción de la moneda -->
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var transaccion in item.Registros)
+                        {
+                            <li>Cuenta: @transaccion.CuentaNombre, Tipo Movimiento: @transaccion.TipoMovimientoNombre, Monto: @transaccion.Monto</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

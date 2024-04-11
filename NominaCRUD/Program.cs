@@ -1,16 +1,25 @@
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using NominaCRUD.Controllers;
 using NominaCRUD.Models;
+using NuGet.Protocol.Core.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSingleton<ContabilidadService>();
+builder.Services.AddHttpClient<AsientosContablesController>(client => {
+    client.BaseAddress = new Uri("https://ap1-contabilidad.azurewebsites.net/");
+});
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<RecorverNominaContext>(
     options => options.UseSqlServer(  builder.Configuration.GetConnectionString("CadenaSQL") ) 
     );
+
+
+
 
 var app = builder.Build();
 

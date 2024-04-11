@@ -1,0 +1,95 @@
+﻿@model NominaCRUD.Models.AsientoContable
+
+@{
+    ViewData["Title"] = "Crear Asiento Contable";
+}
+
+<h1>Crear Asiento Contable</h1>
+
+<form asp-action="Crear" class="my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label">Descripción:</label>
+                <input asp-for="Descripcion" class="form-control" placeholder="Inserta la Descripción" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Auxiliar" class="control-label">Auxiliar:</label>
+                <input asp-for="Auxiliar" class="form-control" placeholder="Inserta el Auxiliar" />
+                <span asp-validation-for="Auxiliar" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label">Fecha:</label>
+                <input asp-for="Fecha" type="date" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Monto" class="control-label">Monto:</label>
+                <input asp-for="Monto" class="form-control" />
+                <span asp-validation-for="Monto" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label">Estado:</label>
+                <select asp-for="Estado.Id" asp-items="@(new SelectList(ViewData["Estados"] as List<Estado>, "Id", "Descripcion"))" class="form-control">
+                    <option value="">Seleccione un estado</option>
+                </select>
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Moneda" class="control-label">Moneda:</label>
+                <select asp-for="Moneda.Id" asp-items="@(new SelectList(ViewData["Monedas"] as List<Moneda>, "Id", "Descripcion"))" class="form-control">
+                    <option value="">Seleccione una moneda</option>
+                </select>
+                <span asp-validation-for="Moneda.Id" class="text-danger"></span>
+            </div>
+
+            <h2>Transacciones</h2>
+
+            <div class="form-group" id="transacciones1">
+                <label for="Transacciones[0].Cuenta">Cuenta:</label>
+                <select asp-for="Transacciones[0].Cuenta.Id" asp-items="@(new SelectList(ViewData["CuentasContables"] as List<Cuenta>, "Id", "Descripcion"))" class="form-control">
+                    <option value="">Seleccione una cuenta contable</option>
+                </select>
+                <span asp-validation-for="Transacciones[0].Cuenta" class="text-danger"></span>
+
+                <label for="Transacciones[0].TipoMovimiento">Tipo de Movimiento:</label>
+                <select asp-for="Transacciones[0].TipoMovimiento.Id" asp-items="@(new SelectList(ViewData["TiposMovimiento"] as List<TipoMovimiento>, "Id", "Descripcion"))" class="form-control">
+                    <option value="">Seleccione un tipo de movimiento</option>
+                </select>
+
+                <span asp-validation-for="Transacciones[0].TipoMovimiento" class="text-danger"></span>
+
+                <label for="Transacciones[0].Monto">Monto:</label>
+                <input asp-for="Transacciones[0].Monto" class="form-control" />
+                <span asp-validation-for="Transacciones[0].Monto" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="transacciones2">
+                <label for="Transacciones[1].Cuenta">Cuenta:</label>
+                <select asp-for="Transacciones[1].Cuenta.Id" asp-items="@(new SelectList(ViewData["CuentasContables"] as List<Cuenta>, "Id", "Descripcion"))" class="form-control">
+                    <option value="">Seleccione una cuenta contable</option>
+                </select>
+                <span asp-validation-for="Transacciones[1].Cuenta" class="text-danger"></span>
+
+                <label for="Transacciones[1].TipoMovimiento">Tipo de Movimiento:</label>
+                <select asp-for="Transacciones[1].TipoMovimiento.Id" asp-items="@(new SelectList(ViewData["TiposMovimiento"] as List<TipoMovimiento>, "Id", "Descripcion"))" class="form-control">
+                    <option value="">Seleccione un tipo de movimiento</option>
+                </select>
+                <span asp-validation-for="Transacciones[1].TipoMovimiento" class="text-danger"></span>
+
+                <label for="Transacciones[1].Monto">Monto:</label>
+                <input asp-for="Transacciones[1].Monto" class="form-control" />
+                <span asp-validation-for="Transacciones[1].Monto" class="text-danger"></span>
+            </div>
+            <!-- Puedes agregar más campos de transacción según sea necesario -->
+
+            <button type="submit" class="btn btn-primary">Crear</button>
+        </div>
+    </div>
+</form>
